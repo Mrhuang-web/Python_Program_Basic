@@ -1,6 +1,10 @@
 # -*- coding:utf-8 -*-
 # Copyright (c) 2025 HuangJiaJie
 
+from copy import deepcopy
+import operator
+import copy
+
 # 赋值,多个变量同个值,仅创建了一个整型对象,三个变量被分配到相同的内存空间
 a = b = c = 1
 
@@ -73,8 +77,6 @@ List_7 = [[1, 2], [2, 3], [3, 4]]
 print(id(List_1), id(List_2), "\n")
 
 # 标准类型 - List(浅拷贝)  - 拷贝出一个新对象，内容一样但地址不同（外层地址不同,内层都是一样 - 地址相同修改变量会影响前面的变量） - 其余方式
-import copy
-
 List_copy_1 = copy.copy(List_1)
 List_copy_2 = List_1[:]
 List_copy_3 = list(List_1)
@@ -89,8 +91,6 @@ print("copy浅拷贝-方式4", id(List_copy_4), id(List_copy_4))
 print("copy浅拷贝-方式4", id(List_copy_4[2]), id(List_copy_4[2]), "\n")
 
 # 标准类型 - List(深拷贝)  - 递归拷贝所有层，地址全不同（内外层不一样-除常量,但内层对象里还有内层就还是一样 - 地址相同修改变量会影响上个变量值）
-from copy import deepcopy
-
 List_deepcopy_1 = deepcopy(List_1)
 List_deepcopy_2 = deepcopy(List_3)
 print("copy深拷贝-方式2之1", id(List_deepcopy_1), id(List_1))
@@ -165,8 +165,6 @@ List_1.clear()
 print("List值删除_clear_清空所有:", List_1, "\n")
 
 # 标准类型 - List(列表比较)
-import operator
-
 print("List列表比较_operator_列表内部对象_元素值和顺序:", operator.eq(List_3, List_4))
 print("List列表比较_==:", List_3 == List_4)
 print("List列表比较_id_列表地址:", id(List_3), id(List_4))
